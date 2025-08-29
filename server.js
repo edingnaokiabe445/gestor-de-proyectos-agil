@@ -7,14 +7,14 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static('public')); // Serve static files from 'public' directory
 
 // Route to serve the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(`${__dirname}/public/index.html`); // Send index.html file
 });
 
 // Starting the server and listening on the specified port
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`); // Log server status
 });
