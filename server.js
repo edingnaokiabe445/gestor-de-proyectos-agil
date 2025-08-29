@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path'); // Importar módulo path para la resolución de rutas
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +12,12 @@ app.use(express.static('public')); // Servir archivos estáticos desde el direct
 
 // Ruta para servir el archivo index.html
 app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/public/index.html`); // Enviar el archivo index.html
+    res.sendFile(path.join(__dirname, 'public', 'index.html'), (err) => { // Enviar el archivo index.html
+        if (err) {
+            console.error('Error al enviar el archivo:', err);
+            res.status(err.status).end();
+        }
+    });
 });
 
 // Iniciando el servidor y escuchando en el puerto especificado
