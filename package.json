@@ -10,5 +10,11 @@
     "express": "^4.17.1",
     "body-parser": "^1.19.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com"
+    }
+  ]
 }
